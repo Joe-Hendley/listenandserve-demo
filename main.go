@@ -38,7 +38,6 @@ func main() {
 	diff := then.Sub(now)
 
 	fmt.Printf("%d successes out of %d attempts in %v\n", successes, attempts, diff)
-
 }
 
 func tryPing(server *http.Server, startServer func(*http.Server)) int {

@@ -7,7 +7,7 @@ import (
 )
 
 func channelDelayTimeout(server *http.Server) {
-	done := make(chan bool)
+	done := make(chan struct{})
 	defer close(done)
 
 	go func() {
@@ -16,7 +16,7 @@ func channelDelayTimeout(server *http.Server) {
 			panic(err)
 		}
 
-		done <- true
+		done <- struct{}{}
 
 		err = server.Serve(l)
 		if err != http.ErrServerClosed {
